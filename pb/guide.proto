@@ -1,0 +1,23 @@
+syntax = "proto3"; // proto版本
+option go_package="./pb";
+package pb; // 指定包名，默认go中包名也是这个
+
+// 定义Love服务
+service Guide {
+  // 定义Confession方法
+  rpc S1R1 (GuideRequest) returns ( GuideResponse ) {}
+  rpc S1Rn(GuideRequest) returns (stream GuideResponse ) {}
+  rpc SnR1(stream GuideRequest) returns (GuideResponse ) {}
+  rpc SnRn(stream GuideRequest) returns (stream GuideResponse ) {}
+
+}
+
+// 请求
+message GuideRequest {
+  string name = 1;
+}
+
+// 响应
+message GuideResponse {
+  string result = 1;
+}
